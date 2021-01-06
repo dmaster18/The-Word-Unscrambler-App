@@ -57,11 +57,11 @@ class Game extends Component {
             <>
               <h1 id='final-score'>Your Final Score is {this.props.score} Points!</h1>
               <form>
-                <input type='text' id='name'>Enter Name</input>
-                <input type='submit' onClick={this.submitToLeaderboard}>Submit Score</input>
+                <input type='text' id='name'></input>
+                <input type='submit' onClick={this.submitToLeaderboard}></input>
               </form>
             </>
-          );
+          )
         }
     }
   }
