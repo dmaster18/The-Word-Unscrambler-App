@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import Game from './Game.js'
 import Trainer from './Trainer.js'
+import Leaderboard from './Leaderboard.js'
 import {
   BrowserRouter as Router,
   Switch,
@@ -24,6 +25,7 @@ function App() {
                 <Link to="/medium-game">Medium Game</Link>
                 <Link to="/long-game">Long Game</Link>
                 <Link to="/trainer">Word Trainer</Link>
+                <Link to="/leaderboard">Leaderboard</Link>
               </nav>
           </Route>
           <Route exact path="/quick-game">
@@ -46,6 +48,12 @@ function App() {
           </Route>
           <Route exact path="/trainer">
             <Trainer/>
+            <nav>
+              <Link to="/">Home Page</Link>
+            </nav>
+          </Route>
+          <Route exact path="/leaderboard">
+            <Leaderboard/>
             <nav>
               <Link to="/">Home Page</Link>
             </nav>
