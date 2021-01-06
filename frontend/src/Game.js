@@ -32,11 +32,11 @@ class Game extends Component {
 
  submitToLeaderboard = (event) => {
    event.preventDefault();
-   const name = event.target.value;
+   const name = document.getElementById('name').value;
    const score = this.props.score;
    const playerData = { player: { name, score: this.props.score } };
    const playersURL = 'http://127.0.0.1:3000/players';
-   return fetch(playersURL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(playerData) }).then(() => { window.location.href = ''; });
+   return fetch(playersURL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(playerData) }).then(() => { window.location.href = 'http://localhost:3001/leaderboard'; });
   }
 
   render() {
@@ -56,7 +56,10 @@ class Game extends Component {
           return (
             <>
               <h1 id='final-score'>Your Final Score is {this.props.score} Points!</h1>
-              <button onClick={this.submitToLeaderboard}>Submit Score to Leaderboard</button>
+              <form>
+                <input type='text' id='name'>Enter Name</input>
+                <input type='submit' onClick={this.submitToLeaderboard}>Submit Score</input>
+              </form>
             </>
           );
         }
