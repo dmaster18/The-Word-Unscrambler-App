@@ -30,6 +30,15 @@ class Game extends Component {
    this.props.fetchWords(this.props.numberOfWords);
  }
 
+ submitToLeaderboard = (event) => {
+   event.preventDefault();
+   const name = event.target.value;
+   const score = this.props.score;
+   const playerData = { player: { name, score: this.props.score } };
+   const playersURL = 'http://127.0.0.1:3000/players';
+   return fetch(playersURL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(playerData) }).then(() => { window.location.href = ''; });
+  }
+
   render() {
     switch (this.props.status) {
       case 'Loading': {
@@ -47,6 +56,7 @@ class Game extends Component {
           return (
             <>
               <h1 id='final-score'>Your Final Score is {this.props.score} Points!</h1>
+              <button onClick={this.submitToLeaderboard}>Submit Score to Leaderboard</button>
             </>
           );
         }
