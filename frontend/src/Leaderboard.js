@@ -16,7 +16,7 @@ export default class Leaderboard extends Component {
 
   renderLeaderboardData() {
     const sortedPlayerData = this.state.playerData.sort(function (a, b) { return b.attributes.score - a.attributes.score });
-    const leaderboardData = sortedPlayerData.map(player => <tr><td>{player.attributes.name}</td> <td>{player.attributes.score} Points</td></tr>);
+    const leaderboardData = sortedPlayerData.map((player, index) => <tr><td>{index+1}</td><td>{player.attributes.name}</td> <td>{player.attributes.score} Points</td></tr>);
     return leaderboardData;
   }
 
@@ -32,7 +32,7 @@ export default class Leaderboard extends Component {
     return (
       <div>
         <table id='leaderboard'>
-          <tr><th>Name</th><th>Score</th></tr>
+          <tr><th>Rank</th><th>Name</th><th>Score</th></tr>
           {this.renderLeaderboardData()}
         </table>
       </div>
