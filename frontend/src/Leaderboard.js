@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 
 function mapStateToProps(state) {
-  return {boardStatus: state.boardStatus, board: state.board}
+  return {boardStatus: state.boardStatus, players: state.players}
 }
 
 class Leaderboard extends Component {
@@ -45,5 +45,6 @@ class Leaderboard extends Component {
   }
 
 }
+
 
 export default connect(mapStateToProps)(Leaderboard)
