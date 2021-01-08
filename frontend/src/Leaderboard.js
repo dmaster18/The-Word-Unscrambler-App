@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default class Leaderboard extends Component {
+class Leaderboard extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -16,7 +16,7 @@ export default class Leaderboard extends Component {
 
   renderLeaderboardData() {
     const sortedPlayerData = this.state.playerData.sort(function (a, b) { return b.attributes.score - a.attributes.score });
-    const leaderboardData = sortedPlayerData.map((player, index) => <tr><td>{index+1}</td><td>{player.attributes.name}</td> <td>{player.attributes.score} Points</td></tr>);
+    const leaderboardData = sortedPlayerData.map((player, index) => <tr><td>{index+1}</td><td>{player.attributes.name}.</td> <td>{player.attributes.score} Points</td></tr>);
     return leaderboardData;
   }
 
