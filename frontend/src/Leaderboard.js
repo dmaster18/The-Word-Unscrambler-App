@@ -40,3 +40,5 @@ class Leaderboard extends Component {
   }
 
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(Game)
