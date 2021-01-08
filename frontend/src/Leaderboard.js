@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
 
+
+function mapStateToProps(state) {
+  return {boardStatus: state.boardStatus, board: state.board}
+}
+
 class Leaderboard extends Component {
   constructor(props) {
     super(props)
@@ -41,4 +46,4 @@ class Leaderboard extends Component {
 
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Game)
+export default connect(mapStateToProps)(Leaderboard)
