@@ -1,20 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
+
+  Redirect
 } from "react-router-dom";
 
 import WordContainer from './game-components/WordContainer';
 import Word from './game-components/Word';
 import Timer from './game-components/Timer';
-import {fetchWords, endGame, nextWord } from './actions';
+import {fetchWords, endGame, nextWord, submitToLeaderboard } from './actions';
 
 function mapDispatchToProps(dispatch){
   return { fetchWords: (numberOfWords) => dispatch(fetchWords(numberOfWords)),
-   endGame: () => dispatch(endGame()),
+   endGame: () => dispatch(endGame()), submitToLeaderboard: (name, score) => dispatch(submitToLeaderboard(name, score))
   }
 }
 
@@ -25,19 +23,35 @@ function mapStateToProps(state) {
 }
 
 class Game extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {name: ''}
+  }
 
  componentDidMount() {
    this.props.fetchWords(this.props.numberOfWords);
  }
 
- submitToLeaderboard = (event) => {
+ handleChange = (event) => {
+   this.setState(
+      {name: event.target.value}
+    )
+ }
+
+ handleSubmit = (event) => {
+   event.preventDefault();
+   this.props.submitToLeaderboard(this.state.name, this.props.score)
+   console.log(this.state.name, this.props.score)
+ }
+
+ /*submitToLeaderboard = (event) => {
    event.preventDefault();
    const name = document.getElementById('name').value;
    const score = this.props.score;
    const playerData = { player: { name, score: this.props.score } };
    const playersURL = 'http://127.0.0.1:3000/players';
    return fetch(playersURL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(playerData) }).then(() => { window.location.href = 'http://localhost:3001/leaderboard'; });
-  }
+ }*/
 
   render() {
     switch (this.props.status) {
@@ -57,12 +71,28 @@ class Game extends Component {
             <>
               <h1 id='final-score'>Your Final Score is {this.props.score} Points!</h1>
               <form>
-                <input type='text' id='name'></input>
-                <input type='submit' onClick={this.submitToLeaderboard}></input>
+                <input type='text' id='name' placeholder='Your Name' value={this.state.name} onChange={this.handleChange}/>
+                <input type='submit' onClick={this.handleSubmit}></input>
               </form>
             </>
           )
         }
+        case 'Submit Success': {
+          return (<Redirect to="/leaderboard" />)
+        }
+        case 'Submit Error': {
+          return (
+            <div>Sorry, we failed to submit your score to the leaderboard. Please return later.</div>
+          )
+        }
+      default: {
+        return (
+          <>
+            <div>Sorry, the Word Unscrambler is having a bad day. Please come back later.</div>
+          </>
+        )
+      }
+
     }
   }
 }
