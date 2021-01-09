@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { fetchPlayers } from './actions';
+
 
 
 function mapStateToProps(state) {
@@ -6,26 +9,14 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch){
-  return { fetchPlayers: () => dispatch(fetchPlayers())
-  }
+  return { fetchPlayers: () => dispatch(fetchPlayers()) }
 }
 
 class Leaderboard extends Component {
-  /*constructor(props) {
-    super(props)
-    this.state = {
-      playerData: []
-    }
-  }*/
 
-  /*fetchPlayers () {
-    const playersURL = 'http://127.0.0.1:3000/players';
-    const playerData = fetch(playersURL).then(resp => resp.json());
-    return playerData;
-  }*/
 
   renderLeaderboardData() {
-    const sortedPlayerData = this.props.playerPlayers.sort(function (a, b) { return b.score - a.score });
+    const sortedPlayerData = this.props.fetchPlayers.sort(function (a, b) { return b.score - a.score });
     const leaderboardData = sortedPlayerData.map((player, index) => <tr><td>{index+1}</td><td>{player.name}.</td> <td>{player.score} Points</td></tr>);
     return leaderboardData;
   }
@@ -45,3 +36,16 @@ class Leaderboard extends Component {
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(Leaderboard)
+
+/*constructor(props) {
+  super(props)
+  this.state = {
+    playerData: []
+  }
+}*/
+
+/*fetchPlayers () {
+  const playersURL = 'http://127.0.0.1:3000/players';
+  const playerData = fetch(playersURL).then(resp => resp.json());
+  return playerData;
+}*/
