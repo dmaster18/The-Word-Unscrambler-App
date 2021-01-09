@@ -71,6 +71,22 @@ export function fetchTrainerWords() {
 
 //Leaderboard Functions
 
+
+export function fetchPlayers () {
+  return (dispatch) => {
+    dispatch({type: 'FETCH_PLAYERS_START' });
+    return fetch(`http://127.0.0.1:3000/players`)
+    .then(response => response.json())
+    .then(json => dispatch({type: 'FETCH_PLAYERS_SUCCESS',
+    data: json.data.map(player => ({
+      name: player.attributes.name,
+      score: player.attributes.score
+    }))
+  }))
+  .catch((error) => {console.log(error); dispatch({type: 'FETCH_PLAYERS_ERROR'})});
+};
+}
+
 export function submitToLeaderboard() {
   return (dispatch) => {
     dispatch({type: 'FETCH_LEADERBOARD_START' });

@@ -5,6 +5,11 @@ function mapStateToProps(state) {
   return {boardStatus: state.boardStatus, players: state.players}
 }
 
+function mapDispatchToProps(dispatch){
+  return { fetchPlayers: () => dispatch(fetchPlayers())
+  }
+}
+
 class Leaderboard extends Component {
   constructor(props) {
     super(props)
@@ -13,11 +18,11 @@ class Leaderboard extends Component {
     }
   }
 
-  fetchPlayers () {
+  /*fetchPlayers () {
     const playersURL = 'http://127.0.0.1:3000/players';
     const playerData = fetch(playersURL).then(resp => resp.json());
     return playerData;
-  }
+  }*/
 
   renderLeaderboardData() {
     const sortedPlayerData = this.state.playerData.sort(function (a, b) { return b.attributes.score - a.attributes.score });
@@ -47,4 +52,4 @@ class Leaderboard extends Component {
 }
 
 
-export default connect(mapStateToProps)(Leaderboard)
+export default connect(mapStateToProps, mapDispatchToProps)(Leaderboard)
