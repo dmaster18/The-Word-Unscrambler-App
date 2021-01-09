@@ -28,8 +28,6 @@ class Leaderboard extends Component {
     </table>)
   }
 
-
-
   render() {
     switch(this.props.boardStatus) {
       case 'Success':
