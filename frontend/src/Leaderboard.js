@@ -13,25 +13,47 @@ function mapDispatchToProps(dispatch){
 }
 
 class Leaderboard extends Component {
-
-
-  renderLeaderboardData() {
-    const sortedPlayerData = this.props.fetchPlayers.sort(function (a, b) { return b.score - a.score });
-    const leaderboardData = sortedPlayerData.map((player, index) => <tr><td>{index+1}</td><td>{player.name}.</td> <td>{player.score} Points</td></tr>);
-    return leaderboardData;
+  componentDidMount() {
+    this.props.fetchPlayers()
   }
 
-  render () {
+  renderLeaderboardData(){
+    const sortedPlayerData = this.props.players.sort(function (a, b) { return b.score - a.score });
+    const leaderboardData = sortedPlayerData.map((player, index) => <tr><td>{index+1}.</td>
+    <td>{player.name}</td> <td>{player.score} Points</td></tr>);
     return (
-      <div>
-        <table id='leaderboard'>
-          <tr><th>Rank</th><th>Name</th><th>Score</th></tr>
-          {this.renderLeaderboardData()}
-        </table>
-      </div>
-    )
+    <table id='leaderboard'>
+      <tr><th>Rank</th><th>Name</th><th>Score</th></tr>
+        {leaderboardData}
+    </table>)
   }
 
+
+
+  render() {
+    switch(this.props.boardStatus) {
+      case 'Success':
+        {
+          return this.renderLeaderboardData();
+        }
+      case 'Error':
+        {
+          if (this.props.players.length > 0) {
+            return (<>
+                {this.renderLeaderboardData()}
+                <div>Sorry. We had an error updating the leaderboard.</div>
+              </>)
+          } else {
+            return <div>Sorry. We had an error loading the leaderboard.</div>;
+          }
+        }
+      case 'Loading':
+      default:
+        {
+          return <div>Loading...</div>
+        }
+    }
+  }
 }
 
 
