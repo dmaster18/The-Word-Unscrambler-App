@@ -1,7 +1,7 @@
 const initialState = {/*Game Variables*/score: 0, wordIndex: 0, wordSet: [],
 gameStatus: 'Loading', usedTiles: [], correctWords: [], incorrectWords: [],
 submittedWords: [], userWarning: null, /*Trainer Variables*/ trainerWords: [],
-trainerStatus: 'Loading', /*Leaderboard Variables*/ players: [], boardStatus: 'Loading'}
+trainerStatus: 'Loading', /*Leaderboard Variables*/ players: [], boardStatus: undefined}
 
 export default function reducer(state=initialState, action) {
   switch(action.type) {
@@ -68,17 +68,17 @@ export default function reducer(state=initialState, action) {
       return {...state, trainerWords: [], trainerStatus: 'Error'}
     //Leaderboard Cases
     case 'FETCH_PLAYERS_START':
-      return initialState
+      return {...state, boardStatus: 'Loading'}
     case 'FETCH_PLAYERS_SUCCESS':
-      return {...state, players: action.data, boardStatus: 'Running'}
+      return {...state, players: action.data, boardStatus: 'Success'}
     case 'FETCH_PLAYERS_ERROR':
-      return {...state, players: [], boardStatus: 'Error'}
+      return {...state, boardStatus: 'Error'}
     case 'SUBMIT_PLAYER_START':
       return initialState
     case 'SUBMIT_PLAYER_SUCCESS':
-      return {...state, players: [...players, action.player], boardStatus: 'Running'}
+      return {...state, players: [...state.players, action.player], gameStatus: 'Submit Success' }
     case 'SUBMIT_PLAYER_ERROR':
-      return {...state, players: [], boardStatus: 'Error'}
+      return {...state, players: [], gameStatus: 'Submit Error'}
     default:
       return state;
   }
