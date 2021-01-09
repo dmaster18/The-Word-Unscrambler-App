@@ -87,26 +87,15 @@ export function fetchPlayers () {
 };
 }
 
-/*
-export function submitToLeaderboard() {
+
+export function submitToLeaderboard(event) {
   return (dispatch) => {
-    dispatch({type: 'FETCH_LEADERBOARD_START' });
-    return fetch(`http://127.0.0.1:3000/players`)
-    .then(response => response.json())
-    .then(json => dispatch({type: 'FETCH_LEADERBOARD_SUCCESS',
-    data: json.data.map(word => ({
-      name: document.getElementById('name').value,
-      letterArray: shuffle(word.attributes.name),
-      allWords: word.attributes.all_words.map((word) => word.toLowerCase())
-    }))
-  }))
-  .catch((error) => {console.log(error); dispatch({type: 'FETCH_WORDS_ERROR'})});
-};
-
-
-  const score = this.props.score;
-  const playerData = { player: { name, score: this.props.score } };
-  const playersURL = 'http://127.0.0.1:3000/players';
-  return fetch(playersURL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(playerData) }).then(() => { window.location.href = 'http://localhost:3001/leaderboard'; });
- }
- */
+    const playersURL = 'http://127.0.0.1:3000/players';
+    const name = event.target.value
+    const score = this.state.score;
+    const playerData = { player: { name, score } };
+    dispatch({type: 'SUBMIT_PLAYER_START' });
+    .then(json => dispatch({type: 'SUBMIT_PLAYER_SUCCESS',
+    return fetch(playersURL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(playerData) }).then(() => { window.location.href = 'http://localhost:3001/leaderboard'; });
+    .catch((error) => {console.log(error); dispatch({type: 'FETCH_PLAYER_ERROR'})});}
+  }

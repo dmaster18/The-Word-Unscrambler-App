@@ -73,6 +73,12 @@ export default function reducer(state=initialState, action) {
       return {...state, players: action.data, boardStatus: 'Running'}
     case 'FETCH_PLAYERS_ERROR':
       return {...state, players: [], boardStatus: 'Error'}
+    case 'SUBMIT_PLAYER_START':
+      return initialState
+    case 'SUBMIT_PLAYER_SUCCESS':
+      return {...state, players: [...players, action.player], boardStatus: 'Running'}
+    case 'SUBMIT_PLAYER_ERROR':
+      return {...state, players: [], boardStatus: 'Error'}
     default:
       return state;
   }

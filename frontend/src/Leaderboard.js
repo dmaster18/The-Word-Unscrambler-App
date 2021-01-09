@@ -37,6 +37,7 @@ class Leaderboard extends Component {
 
 export default connect(mapStateToProps, mapDispatchToProps)(Leaderboard)
 
+
 /*constructor(props) {
   super(props)
   this.state = {
