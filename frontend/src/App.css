@@ -152,3 +152,14 @@ leaderboard tr:hover {
   border: 1px solid #ddd;
   padding: 4px;
 }
+
+#links a{
+  color: white;
+  font-weight: bold;
+}
+
+#links {
+  display: flex;
+  flex-direction: column;
+  background: rgba(0, 0, 0, 0.3);
+}
