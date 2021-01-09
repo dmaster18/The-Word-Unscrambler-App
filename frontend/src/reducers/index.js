@@ -67,11 +67,11 @@ export default function reducer(state=initialState, action) {
     case 'FETCH_TRAINER_WORDS_ERROR':
       return {...state, trainerWords: [], trainerStatus: 'Error'}
     //Leaderboard Cases
-    case 'FETCH_LEADERBOARD_START':
+    case 'FETCH_PLAYERS_START':
       return initialState
-    case 'FETCH_LEADERBOARD_SUCCESS':
+    case 'FETCH_PLAYERS_SUCCESS':
       return {...state, players: action.data, boardStatus: 'Running'}
-    case 'FETCH_LEADERBOARD_ERROR':
+    case 'FETCH_PLAYERS_ERROR':
       return {...state, players: [], boardStatus: 'Error'}
     default:
       return state;

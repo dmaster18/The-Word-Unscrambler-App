@@ -87,6 +87,7 @@ export function fetchPlayers () {
 };
 }
 
+/*
 export function submitToLeaderboard() {
   return (dispatch) => {
     dispatch({type: 'FETCH_LEADERBOARD_START' });
@@ -108,3 +109,4 @@ export function submitToLeaderboard() {
   const playersURL = 'http://127.0.0.1:3000/players';
   return fetch(playersURL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(playerData) }).then(() => { window.location.href = 'http://localhost:3001/leaderboard'; });
  }
+ */
