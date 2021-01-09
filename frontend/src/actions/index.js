@@ -71,7 +71,6 @@ export function fetchTrainerWords() {
 
 //Leaderboard Functions
 
-
 export function fetchPlayers () {
   return (dispatch) => {
     dispatch({type: 'FETCH_PLAYERS_START' });
@@ -87,15 +86,13 @@ export function fetchPlayers () {
 };
 }
 
-
-export function submitToLeaderboard(event) {
+export function submitToLeaderboard(name, score) {
   return (dispatch) => {
     const playersURL = 'http://127.0.0.1:3000/players';
-    const name = event.target.value
-    const score = this.state.score;
     const playerData = { player: { name, score } };
     dispatch({type: 'SUBMIT_PLAYER_START' });
-    .then(json => dispatch({type: 'SUBMIT_PLAYER_SUCCESS',
-    return fetch(playersURL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(playerData) }).then(() => { window.location.href = 'http://localhost:3001/leaderboard'; });
-    .catch((error) => {console.log(error); dispatch({type: 'FETCH_PLAYER_ERROR'})});}
+    return fetch(playersURL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(playerData) })
+    .then(json => dispatch({type: 'SUBMIT_PLAYER_SUCCESS'}))
+    .catch((error) => {console.log(error); dispatch({type: 'FETCH_PLAYER_ERROR'})});
   }
+}
