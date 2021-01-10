@@ -16,8 +16,7 @@ In all the game modules, the user must score as many points as possible by creat
 
 In the short word game, the user must score as many points as possible within a minute from one letter grouping. Likewise, in the medium and long word games, the user must do the same but with five and ten possible letter groups within three and five minutes, respectively. The user cannot use any letter tile more than once when forming a new word. When a user enters a word, the game will inform him whether the word is correct or not. Upon completion of any of the games, the use will be given his or her final score. If proud of the final score, the user can choose to submit the score along with his or her name to the app's leaderboard, which will showcase the score to the whole world.
 
-
-
+In addition to the short, medium, and long game modules, a user can choose to visit the app's leaderboard that shows all the submitted players' names and corresponding scores. Lastly, there is also a 'Word Trainer' component that allows the user to view all the different two- through nine-letter possible word combinations that can be formed from all of the app's nine-letter pairings. This can both help the user improve his or her final score as well as improve his or her vocabulary. Each word is a link that, when clicked, leads to the word's definition on Dictionary.com. 
 
 ## Contributing
 
