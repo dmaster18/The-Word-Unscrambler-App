@@ -14,7 +14,9 @@ From the homepage, the user can click links to either play a short, medium, or l
 
 In all the game modules, the user must score as many points as possible by creating as many words in the allotted time. Each word has a score that is equivalent to the length of the word, so a two-letter word is worth two points and a nine-letter word is worth nine points.
 
-In the short word game, the user must score as many points as possible within a minute from one letter grouping. Likewise, in the medium and long word games, the user must do the same but with five and ten possible letter groups within three and five minutes, respectively. The user cannot use any letter tile more than once when forming a new word. When a user enters a word, the game will inform him whether the word is correct or not.
+In the short word game, the user must score as many points as possible within a minute from one letter grouping. Likewise, in the medium and long word games, the user must do the same but with five and ten possible letter groups within three and five minutes, respectively. The user cannot use any letter tile more than once when forming a new word. When a user enters a word, the game will inform him whether the word is correct or not. Upon completion of any of the games, the use will be given his or her final score. If proud of the final score, the user can choose to submit the score along with his or her name to the app's leaderboard, which will showcase the score to the whole world.
+
+
 
 
 ## Contributing
