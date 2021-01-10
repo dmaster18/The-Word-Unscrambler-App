@@ -61,7 +61,7 @@ export default function reducer(state=initialState, action) {
       return {...state, gameStatus: 'Complete'}
     //Trainer Cases
     case 'FETCH_TRAINER_WORDS_START':
-      return initialState
+      return {...state, trainerStatus: 'Loading'}
     case 'FETCH_TRAINER_WORDS_SUCCESS':
       return {...state, trainerWords: action.data, trainerStatus: 'Running'}
     case 'FETCH_TRAINER_WORDS_ERROR':
