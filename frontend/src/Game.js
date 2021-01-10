@@ -73,7 +73,7 @@ class Game extends Component {
         }
         case 'Submit Error': {
           return (
-            <div>Sorry, we failed to submit your score to the leaderboard. Please return later.</div>
+            <div>Sorry, we failed to submit your score to the leaderboard. Please come back later.</div>
           )
         }
       default: {
