@@ -54,19 +54,4 @@ class Leaderboard extends Component {
   }
 }
 
-
 export default connect(mapStateToProps, mapDispatchToProps)(Leaderboard)
-
-
-/*constructor(props) {
-  super(props)
-  this.state = {
-    playerData: []
-  }
-}*/
-
-/*fetchPlayers () {
-  const playersURL = 'http://127.0.0.1:3000/players';
-  const playerData = fetch(playersURL).then(resp => resp.json());
-  return playerData;
-}*/
