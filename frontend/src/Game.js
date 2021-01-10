@@ -43,14 +43,6 @@ class Game extends Component {
    console.log(this.state.name, this.props.score)
  }
 
- /*submitToLeaderboard = (event) => {
-   event.preventDefault();
-   const name = document.getElementById('name').value;
-   const score = this.props.score;
-   const playerData = { player: { name, score: this.props.score } };
-   const playersURL = 'http://127.0.0.1:3000/players';
-   return fetch(playersURL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(playerData) }).then(() => { window.location.href = 'http://localhost:3001/leaderboard'; });
- }*/
 
   render() {
     switch (this.props.status) {
