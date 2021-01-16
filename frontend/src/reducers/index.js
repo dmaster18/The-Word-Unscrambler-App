@@ -1,7 +1,7 @@
-const initialState = {/*Game Variables*/score: 0, wordIndex: 0, wordSet: [],
+const initialState = {/*Game Values*/score: 0, wordIndex: 0, wordSet: [],
 gameStatus: 'Loading', usedTiles: [], correctWords: [], incorrectWords: [],
-submittedWords: [], userWarning: null, /*Trainer Variables*/ trainerWords: [],
-trainerStatus: 'Loading', /*Leaderboard Variables*/ players: [], boardStatus: undefined}
+submittedWords: [], userWarning: null, /*Trainer Values*/ trainerWords: [],
+trainerStatus: 'Loading', /*Leaderboard Values*/ players: [], boardStatus: undefined}
 
 export default function reducer(state=initialState, action) {
   switch(action.type) {
